@@ -124,47 +124,31 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau utilisateur</h1>
                                     </div>
-                                    <form method="POST" action="InsertUtilisateur.php" class="form">
+                                    <form method="POST" action="InsertGroupe.php" class="form">
              
                                             <div class="form-group">
-                                            <label for="id_utilisateur"  class="control-label">Identifiant </label><br>
-                                                <input type="text" name="id_utilisateur" class="form-control form-control-user" id="id_utilisateur"
+                                            <label for="id_groupe"  class="control-label">Identifiant </label><br>
+                                                <input type="text" name="id_groupe" class="form-control form-control-user" id="id_groupe"
                                                     placeholder="Identifiant">
                                             </div>
                                         
                                         <div class="form-group">
-                                        <label for="nom" class="control-label">Noms de l'utilisateur </label><br>
-                                            <input type="text" name="nom" class="form-control form-control-user" id="nom"
-                                                placeholder="Noms de l'utilisateur">
+                                        <label for="nom_group" class="control-label">Noms </label><br>
+                                            <input type="text" name="nom_group" class="form-control form-control-user" id="nom_group"
+                                                placeholder="Noms du groupe">
                                         </div>
                                         
 
                                             <div class="form-group">
-                                            <label for="prenom" class="control-label">Prenom de l'utilisateur</label><br>
-                                                <input type="text"  name="prenom" class="form-control form-control-user"
-                                                    id="prenom" placeholder="Prenom de l'utilisateur">
+                                            <label for="niveau" class="control-label">Niveau</label><br>
+                                                <input type="text"  name="niveau" class="form-control form-control-user"
+                                                    id="niveau" placeholder="niveau concerner">
                                             </div>
                                             <div class="form-group">
-                                            <label for="email" class="control-label">Email de l'utilisateur</label><br>
-                                                <input type="email" name="email"  class="form-control form-control-user"
-                                                    id="email" placeholder="Email de l'utilisateur">
+                                            <label for="cle_chiffrement" class="control-label">clé de chiffrement </label><br>
+                                                <input type="text" name="cle_chiffrement"  class="form-control form-control-user"
+                                                    id="cle_chiffrement" placeholder="clé de chiffrement du groupe">
                                             </div>
-                                            <div class="form-group">
-                                            <label for="mot_de_passe" class="control-label">Mot de passe</label><br>
-                                                <input type="password" name="mot_de_passe"  class="form-control form-control-user"
-                                                    id="mot_de_passe" placeholder="Mot de passe">
-                                            </div>
-                                            <div class="form-group">
-                                            <label for="type_utilisateur" class="control-label">Type d'utilisateur</label><br>
-                                                <input type="text" name="type_utilisateur"  class="form-control form-control-user"
-                                                    id="type_utilisateur" placeholder="Type d'utilisateur">
-                                            </div>
-                                            <div class="form-group">
-                                            <label for="id_groupe" class="control-label">Identifiant du groupe</label><br>
-                                                <input type="text" name="id_groupe"  class="form-control form-control-user"
-                                                    id="id_groupe" placeholder="Identifiant du groupe">
-                                            </div>
-                                        
                                         <button type="submit" class="btn btn-success"> valider </button>
                                         <hr>
                                     </form>
