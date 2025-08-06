@@ -80,8 +80,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Listing Cours</h6>
-                        <a class="collapse-item" href="ListeClients.php">Liste cours</a>
-                        <a class="collapse-item" href="ListeClients.php">Ajouter cours</a>
+                        <a class="collapse-item" href="views/cours/ListeCours.php">Liste des cours</a>
+                        <a class="collapse-item" href="views/cours/ListeCours.php">Ajouter des cours</a>
                     </div>
                 </div>
             </li>

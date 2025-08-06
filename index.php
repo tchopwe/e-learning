@@ -41,7 +41,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"><b>Bienvenu sur votre site E-Learning !!</b></h1>
+                                        <h1 class="h4 text-gray-900 mb-4"><b>Bienvenue sur votre site E-Learning !!</b></h1>
                                     </div>
                                     <form action="action/usersConnexion.php" method="POST" class="user">
                                         <div class="form-group">
