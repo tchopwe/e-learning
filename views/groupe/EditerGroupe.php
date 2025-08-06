@@ -1,20 +1,25 @@
-
 <?php
-	require_once('action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
+	require_once('../../action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
 	
-	$ListedesTable = $dam->query("SELECT * FROM client"); // Je Mets Le Nom de Ma Table à Manipuler
+	$ListedesTable = $dam->query("SELECT * FROM utilisateur"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreClient = $ListedesTable->rowCount();
+    $nombreUtilisateur= $ListedesTable->rowCount();
 
 
-    $ListeOfUsers = $dam->query("SELECT * FROM utilisateur"); // Je Mets Le Nom de Ma Table à Manipuler
+    $Listedegroup = $dam->query("SELECT * FROM groupe"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreUsers = $ListeOfUsers->rowCount();
+    $nombreGroup = $Listedegroup->rowCount();
+
+
+    $ListedesContenu= $dam->query("SELECT * FROM contenu"); // Je Mets Le Nom de Ma Table à Manipuler
+
+    $nombreContenu= $ListedesContenu->rowCount();
+
 
     
 ?>
 
-<
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,13 +34,13 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../asset/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -45,85 +50,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Crédit du sahel</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboard.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-users"></i>
-                    <span>Clients</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Listing client</h6>
-                        <a class="collapse-item" href="ListeClients.php">Liste client</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-          
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-clone"></i>
-                    <span>Dossier</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Charts -->
-
-            <!-- Nav Item - Tables -->
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/cs.jpg" alt="...">
-                <p class="text-center mb-2"><strong>Crédit du sahel</strong> <br>Proche de vous pour le progrès!</p>
-                <!--<a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> -->
-            </div>
-
-        </ul>
+       <?php require_once('../../siderbar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -147,7 +74,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-warning" type="button">
+                                <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -172,7 +99,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-warning" type="button">
+                                            <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -186,13 +113,13 @@
                 <!-- End of Topbar -->
 <?php
 	//Ici, Je Récupère Le ID, Ou Le Nom de La Colonne Clé Primaire de La Table
-	$ARE17 =$_GET['idClient'];
+	$ARE17 =$_GET['id_utilisateur'];
 	
 	// Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
-	require_once('action/Connexion.php');
+	require_once('../../action/Connexion.php');
 	
 	// Je Mets Le Nom de Ma Table à Manipuler En Spécifiant La Condition Sur La Colonne Clé Primaire
-	$ListeClients ="SELECT * FROM client WHERE idClient = '$ARE17'";
+	$ListeClients ="SELECT * FROM utilisateur WHERE id_utilisateur = '$ARE17'";
 	
 	//Ici, Je Récupère Les Valeurs des Résultats de La REQUETTE
 	$RecupListe = $dam->query($ListeClients);
@@ -212,7 +139,7 @@
 						<fieldset>
 							<legend>
 								<div><!-- Je Peux Donner Un Titre à Ma Page -->
-									<h1><center>Modifier Les Informations Sur Le Client </center></h1>
+									<h1><center>Modifier Les Informations Sur L'etudiant </center></h1>
 								</div>
 							</legend><br>
 							<div class="row"><!-- Je Dois Mettre Le Nom du Script Qui Va Valider La Modification des Valeurs -->
@@ -220,36 +147,41 @@
                                     <p></p>
                                 </div>
                                <div class="col-lg-6">
-								<form method="post" action="UpdateClient.php" enctype="multipart/form-data">
+								<form method="post" action="UpdateUtilisateur.php" enctype="multipart/form-data">
 									
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
-										<label for="NomClient">NomClient</label>
-										<input type="text" name="NomClient" class="form-control"  size="50" id="NomClient" value="<?php echo $LaListe['NomClient']; ?>"/>
+										<label for="id_utilisateur">Identifiant</label>
+										<input type="text" name="NomClient" class="form-control"  size="50" id="id_utilisateur" value="<?php echo $LaListe['id_utilisateur']; ?>"/>
 									</div>
 									
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
-										<label for="AgenceClient">AgenceClient</label><br>
-										<input type="text" name="AgenceClient"  class="form-control" size="50" id="AgenceClient" value="<?php echo $LaListe['AgenceClient']; ?>"/>
+										<label for="nom">Noms de l'utilisateur </label><br>
+										<input type="text" name="nom"  class="form-control" size="50" id="nom" value="<?php echo $LaListe['nom']; ?>"/>
 									</div>
 							
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
-										<label for="ContactClient">ContactClient</label><br>
-										<input type="text" name="ContactClient" class="form-control"  size="50" id="ContactClient" value="<?php echo $LaListe['ContactClient']; ?>"/>
+										<label for="prenom">Prenom de l'utilisateur</label><br>
+										<input type="text" name="prenom" class="form-control"  size="50" id="prenom" value="<?php echo $LaListe['prenom']; ?>"/>
 									</div>
 
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
-										<label for="Date_MClient">Date_MClient</label><br>
-										<input type="text" name="Date_MClient" class="form-control"  size="50" id="Date_MClient" value="<?php echo $LaListe['Date_MClient']; ?>"/>
+										<label for="email">Email de l'utilisateur</label><br>
+										<input type="email" name="email" class="form-control"  size="50" id="email" value="<?php echo $LaListe['email']; ?>"/>
 									</div>
 
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
-										<label for="ObjetClient">ObjetClient</label><br>
-										<input type="text" name="ObjetClient" class="form-control"  size="50" id="ObjetClient" value="<?php echo $LaListe['ObjetClient']; ?>"/>
+										<label for="mot_de_passe">Mot de passe</label><br>
+										<input type="password" name="mot_de_passe" class="form-control"  size="50" id="mot_de_passe" value="<?php echo $LaListe['mot_de_passe']; ?>"/>
 									</div>
 
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
-										<label for="TraitementClient">TraitementClient</label><br>
-										<input type="text" name="TraitementClient" class="form-control"  size="50" id="TraitementClient" value="<?php echo $LaListe['TraitementClient']; ?>"/>
+										<label for="type_utilisateur">Type d'utilisateur</label><br>
+										<input type="text" name="type_utilisateur" class="form-control"  size="50" id="type_utilisateur" value="<?php echo $LaListe['type_utilisateur']; ?>"/>
+									</div><br>
+
+									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
+										<label for="id_groupe">Identifiant du groupe</label><br>
+										<input type="text" name="id_groupe" class="form-control"  size="50" id="id_groupe" value="<?php echo $LaListe['id_groupe']; ?>"/>
 									</div><br>
 									
 								

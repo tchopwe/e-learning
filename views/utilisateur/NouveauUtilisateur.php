@@ -1,4 +1,3 @@
-
 <?php
 	require_once('../../action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
 	
@@ -114,74 +113,82 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                        <a target="_blank"
-                            href="NouveauUtilisateur.php" class="btn btn-success mb-3 ml-2"> ajouter utilisateur
-                        </a>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                        
+                            <div class="col-lg-8">
+                                <div >
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau utilisateur</h1>
+                                    </div>
+                                    <form method="POST" action="InsertUtilisateur.php" class="form">
+             
+                                            <div class="form-group">
+                                            <label for="id_utilisateur"  class="control-label">Identifiant </label><br>
+                                                <input type="text" name="id_utilisateur" class="form-control form-control-user" id="id_utilisateur"
+                                                    placeholder="Identifiant">
+                                            </div>
+                                        
+                                        <div class="form-group">
+                                        <label for="nom" class="control-label">Noms de l'utilisateur </label><br>
+                                            <input type="text" name="nom" class="form-control form-control-user" id="nom"
+                                                placeholder="Noms de l'utilisateur">
+                                        </div>
+                                        
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste de tout les utilisateurs</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Identifiant</th>
-                                            <th>Noms de l'utilisateur</th>
-                                            <th>Prenom de l'utilisateur</th>
-                                            <th>Email de l'utilisateur</th>
-                                            <th>Mot de passe</th>
-                                            <th>Type d'utilisateur</th>
-                                            <th>Identifiant du groupe</th>
-                                            <th>ACTIONS</th>
-                                        </tr>
-                                    </thead>
-								<tbody><!-- Ici, Je Récupère Les Valeurs des Résultats de La REQUETTE -->
-								
-									<?php while($STAGIAIRE=$ListedesTable->fetch()){?> 
-									
-										<tr> <!-- Ici, Je Mets Les Noms des Colonnes, Je Dis Bien Les Noms des Colonnes -->
-										
-											<td align="center"><?php echo $STAGIAIRE['id_utilisateur'] ?></td>
-											<td><?php echo $STAGIAIRE['nom'] ?></td>
-											<td><?php echo $STAGIAIRE['prenom'] ?></td>
-											<td><?php echo $STAGIAIRE['email'] ?></td>
-											<td><?php echo $STAGIAIRE['mot_de_passe'] ?></td>
-                                            <td><?php echo $STAGIAIRE['type_utilisateur'] ?></td>
-                                            <td><?php echo $STAGIAIRE['id_groupe'] ?></td>
-                                            <td>
-                                                <a href="EditerUtilisateur.php?id_utilisateur=<?php echo $STAGIAIRE['id_utilisateur'] ?>"  class="btn btn-info btn-circle btn-sm">
-                                                <i class="fas fa-pencil-alt"></i>
-                                                </a>&nbsp;&nbsp;
-                                                <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerUtilisateur.php?id_utilisateur=<?php echo $STAGIAIRE['id_utilisateur'] ?>"  class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>			
-                                            </td>	
-                                    </a>									
-
-												<?php } ?>
-											</td>
-										</tr>
-								</tbody>
-                                </table>
+                                            <div class="form-group">
+                                            <label for="prenom" class="control-label">Prenom de l'utilisateur</label><br>
+                                                <input type="text"  name="prenom" class="form-control form-control-user"
+                                                    id="prenom" placeholder="Prenom de l'utilisateur">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="email" class="control-label">Email de l'utilisateur</label><br>
+                                                <input type="email" name="email"  class="form-control form-control-user"
+                                                    id="email" placeholder="Email de l'utilisateur">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="mot_de_passe" class="control-label">Mot de passe</label><br>
+                                                <input type="password" name="mot_de_passe"  class="form-control form-control-user"
+                                                    id="mot_de_passe" placeholder="Mot de passe">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="type_utilisateur" class="control-label">Type d'utilisateur</label><br>
+                                                <input type="text" name="type_utilisateur"  class="form-control form-control-user"
+                                                    id="type_utilisateur" placeholder="Type d'utilisateur">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="id_groupe" class="control-label">Identifiant du groupe</label><br>
+                                                <input type="text" name="id_groupe"  class="form-control form-control-user"
+                                                    id="id_groupe" placeholder="Identifiant du groupe">
+                                            </div>
+                                        
+                                        <button type="submit" class="btn btn-success"> valider </button>
+                                        <hr>
+                                    </form>
+                                </div>
+                                <div class="col-lg-2"></div>
                             </div>
-                            <a href="action/genePdf.php" class="btn btn-primary position-rigth"> imprimer</a>
                         </div>
                     </div>
-
                 </div>
+
                 <!-- /.container-fluid -->
-                <div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
 
             </div>
+
             <!-- End of Main Content -->
 
             <!-- Footer -->
-           <?php include('../../footer.php')?>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; LeslieNgansop 2024</span>
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>
@@ -196,22 +203,23 @@
     </a>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../../vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../../js/demo/chart-area-demo.js"></script>
-    <script src="../../js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
 </html>
+                <!-- Begin Page Content -->

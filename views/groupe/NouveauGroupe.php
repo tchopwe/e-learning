@@ -1,15 +1,20 @@
-
 <?php
-	require_once('action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
+	require_once('../../action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
 	
-	$ListedesTable = $dam->query("SELECT * FROM client"); // Je Mets Le Nom de Ma Table à Manipuler
+	$ListedesTable = $dam->query("SELECT * FROM utilisateur"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreClient = $ListedesTable->rowCount();
+    $nombreUtilisateur= $ListedesTable->rowCount();
 
 
-    $ListeOfUsers = $dam->query("SELECT * FROM utilisateur"); // Je Mets Le Nom de Ma Table à Manipuler
+    $Listedegroup = $dam->query("SELECT * FROM groupe"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreUsers = $ListeOfUsers->rowCount();
+    $nombreGroup = $Listedegroup->rowCount();
+
+
+    $ListedesContenu= $dam->query("SELECT * FROM contenu"); // Je Mets Le Nom de Ma Table à Manipuler
+
+    $nombreContenu= $ListedesContenu->rowCount();
+
 
     
 ?>
@@ -29,13 +34,13 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../asset/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -45,85 +50,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Crédit du sahel</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboard.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-users"></i>
-                    <span>Clients</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Listing client</h6>
-                        <a class="collapse-item" href="ListeClients.php">Liste client</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-          
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-clone"></i>
-                    <span>Dossier</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Charts -->
-
-            <!-- Nav Item - Tables -->
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/cs.jpg" alt="...">
-                <p class="text-center mb-2"><strong>Crédit du sahel</strong> <br> Proche de vous pour le progrès!</p>
-                <!--<a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> -->
-            </div>
-
-        </ul>
+       <?php require_once('../../siderbar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -147,7 +74,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-warning" type="button">
+                                <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -172,7 +99,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-warning" type="button">
+                                            <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -195,44 +122,48 @@
                             <div class="col-lg-8">
                                 <div >
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau client</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau utilisateur</h1>
                                     </div>
-                                    <form method="POST" action="InsertClient.php" class="form">
-                                    
+                                    <form method="POST" action="InsertUtilisateur.php" class="form">
+             
                                             <div class="form-group">
-
-                                            <label for="NomClient"  class="control-label">NomClient</label><br>
-                                                <input type="text" name="NomClient" class="form-control form-control-user" id="NomClient"
-                                                    placeholder="NomClient">
-                                            </div>
-                                            <div class="form-group">
-                                            <label for="AgenceClient"  class="control-label">AgenceClient </label><br>
-                                                <input type="text" name="AgenceClient" class="form-control form-control-user" id="AgenceClient"
-                                                    placeholder="AgenceClient">
+                                            <label for="id_utilisateur"  class="control-label">Identifiant </label><br>
+                                                <input type="text" name="id_utilisateur" class="form-control form-control-user" id="id_utilisateur"
+                                                    placeholder="Identifiant">
                                             </div>
                                         
                                         <div class="form-group">
-                                        <label for="ContactClient" class="control-label">ContactClient </label><br>
-                                            <input type="contact" name="ContactClient" class="form-control form-control-user" id="ContactClient"
-                                                placeholder="ContactClient">
+                                        <label for="nom" class="control-label">Noms de l'utilisateur </label><br>
+                                            <input type="text" name="nom" class="form-control form-control-user" id="nom"
+                                                placeholder="Noms de l'utilisateur">
                                         </div>
                                         
-                                            <div class="form-group">
-                                                <label for="Date_MClient"class="control-label">Date_MClient</label><br>
-                                                <input type="Date_MClient"  name="Date_MClient"  class="form-control form-control-user"
-                                                    id="Date_MClient" placeholder="Date_MClient">
-                                            </div>
-                                            <div class="form-group">
-                                            <label for="ObjetClient" class="control-label">ObjetClient</label><br>
-                                                <input type="password"  name="ObjetClient" class="form-control form-control-user"
-                                                    id="ObjetClient" placeholder="ObjetClient">
-                                            </div>
-                                            <div class="form-group">
-                                            <label for="exampleTraitementClient" class="control-label">TraitementClient</label><br>
-                                                <input type="text" name="TraitementClient"  class="form-control form-control-user"
-                                                    id="exampleTraitementClient" placeholder="TraitementClient">
-                                            </div>
 
+                                            <div class="form-group">
+                                            <label for="prenom" class="control-label">Prenom de l'utilisateur</label><br>
+                                                <input type="text"  name="prenom" class="form-control form-control-user"
+                                                    id="prenom" placeholder="Prenom de l'utilisateur">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="email" class="control-label">Email de l'utilisateur</label><br>
+                                                <input type="email" name="email"  class="form-control form-control-user"
+                                                    id="email" placeholder="Email de l'utilisateur">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="mot_de_passe" class="control-label">Mot de passe</label><br>
+                                                <input type="password" name="mot_de_passe"  class="form-control form-control-user"
+                                                    id="mot_de_passe" placeholder="Mot de passe">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="type_utilisateur" class="control-label">Type d'utilisateur</label><br>
+                                                <input type="text" name="type_utilisateur"  class="form-control form-control-user"
+                                                    id="type_utilisateur" placeholder="Type d'utilisateur">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="id_groupe" class="control-label">Identifiant du groupe</label><br>
+                                                <input type="text" name="id_groupe"  class="form-control form-control-user"
+                                                    id="id_groupe" placeholder="Identifiant du groupe">
+                                            </div>
                                         
                                         <button type="submit" class="btn btn-success"> valider </button>
                                         <hr>

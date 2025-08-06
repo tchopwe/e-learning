@@ -4,23 +4,25 @@
 	
 	// Ici, Je Récupère Toutes Les Valeurs du Formulaire Avant d'Exécuter La REQUETTE SQL Pour Mise à Jour des Données
 	
-	$NomClient=$_POST['NomClient'];
+	$NomClient=$_POST['id_utilisateur'];
 	
-	$AgenceClient=$_POST['AgenceClient'];
+	$AgenceClient=$_POST['nom'];
 	
-	$ContactClient=$_POST['ContactClient'];
+	$ContactClient=$_POST['prenom'];
 
-	$Date_MClient=$_POST['Date_MClient'];
+	$Date_MClient=$_POST['email'];
 
-	$ObjetClient=$_POST['ObjetClient'];
+	$ObjetClient=$_POST['mot_de_passe'];
 
-	$TraitementClient=$_POST['TraitementClient'];
+	$TraitementClient=$_POST['type_utilisateur'];
+
+	$Traitementgroupe=$_POST['id_groupe'];
 		
 	//Ici, Je Tape Ma REQUETTE SQL Pour Mise à Jour de La Ligne, Et On Modifie Suivant La Clé Primaire Donc Je Dois Toujours Mettre La Colonne1 à La Fin
-	$requete= "UPDATE client SET NomClient = ?, AgenceClient = ?, ContactClient = ?, Date_MClient = ?, ObjetClient = ?, TraitementClient = ? WHERE idClient = ?";
+	$requete= "UPDATE utilisateur SET id_utilisateur = ?, nom = ?, prenom = ?, email = ?, mot_de_passe = ?, type_utilisateur = ?, id_groupe = ? WHERE id_utilisateur = ?";
 	
 	//Ici, Je Construis Le Tableau des Paramètres En Fonction des Valeurs Et Toujours Terminer Par Colonne1, La Colonne Clé Primaire de La Table
-	$param=array($NomClient,$AgenceClient,$ContactClient,$Date_MClient,$ObjetClient,$TraitementClient);
+	$param=array($NomClient,$AgenceClient,$ContactClient,$Date_MClient,$ObjetClient,$TraitementClient,$Traitementgroupe);
 	// var_dump($param);
 	// die();
 	// //Ici, Je Prépare Ma REQUETTE SQL

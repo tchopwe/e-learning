@@ -37,8 +37,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Listing utilisateur</h6>
-                        <a class="collapse-item" href="ListeClients.php">Liste utilisateur</a>
-                        <a class="collapse-item" href="ListeClients.php">Ajouter utilisateur</a>
+                        <a class="collapse-item" href="views/utilisateur/ListeUtilisateur.php">Liste utilisateur</a>
+                        <a class="collapse-item" href="views/utilisateur/NouveauUtilisateur.php">Ajouter utilisateur</a>
                     </div>
                 </div>
             </li>
@@ -108,7 +108,7 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/logo_minesup.jpg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="../../img/logo_minesup.jpg" alt="...">
                 <p class="text-center mb-2"><strong>MINESUP</strong> <br> Proche de vous pour le progrès!</p>
                 <!--<a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> -->
             </div>
