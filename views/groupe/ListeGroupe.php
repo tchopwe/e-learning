@@ -116,7 +116,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         <a target="_blank"
-                            href="NouveauUtilisateur.php" class="btn btn-success mb-3 ml-2"> ajouter utilisateur
+                            href="NouveauGroupe.php" class="btn btn-success mb-3 ml-2"> ajouter utilisateur
                         </a>
 
                     <!-- DataTales Example -->
@@ -130,34 +130,28 @@
                                     <thead>
                                         <tr>
                                             <th>Identifiant</th>
-                                            <th>Noms de l'utilisateur</th>
-                                            <th>Prenom de l'utilisateur</th>
-                                            <th>Email de l'utilisateur</th>
-                                            <th>Mot de passe</th>
-                                            <th>Type d'utilisateur</th>
-                                            <th>Identifiant du groupe</th>
+                                            <th>Noms du groupe</th>
+                                            <th>Niveau concerner</th>
+                                            <th>Clé_chiffrement</th>
                                             <th>ACTIONS</th>
                                         </tr>
                                     </thead>
 								<tbody><!-- Ici, Je Récupère Les Valeurs des Résultats de La REQUETTE -->
 								
-									<?php while($STAGIAIRE=$ListedesTable->fetch()){?> 
+									<?php while($STAGIAIRE=$Listedegroup->fetch()){?> 
 									
 										<tr> <!-- Ici, Je Mets Les Noms des Colonnes, Je Dis Bien Les Noms des Colonnes -->
 										
-											<td align="center"><?php echo $STAGIAIRE['id_utilisateur'] ?></td>
-											<td><?php echo $STAGIAIRE['nom'] ?></td>
-											<td><?php echo $STAGIAIRE['prenom'] ?></td>
-											<td><?php echo $STAGIAIRE['email'] ?></td>
-											<td><?php echo $STAGIAIRE['mot_de_passe'] ?></td>
-                                            <td><?php echo $STAGIAIRE['type_utilisateur'] ?></td>
-                                            <td><?php echo $STAGIAIRE['id_groupe'] ?></td>
+											<td align="center"><?php echo $STAGIAIRE['id_groupe'] ?></td>
+											<td><?php echo $STAGIAIRE['nom_groupe'] ?></td>
+											<td><?php echo $STAGIAIRE['niveau'] ?></td>
+											<td><?php echo $STAGIAIRE['cle_chiffrement'] ?></td>
                                             <td>
-                                                <a href="EditerUtilisateur.php?id_utilisateur=<?php echo $STAGIAIRE['id_utilisateur'] ?>"  class="btn btn-info btn-circle btn-sm">
+                                                <a href="EditerGroupe.php?id_groupe=<?php echo $STAGIAIRE['id_groupe'] ?>"  class="btn btn-info btn-circle btn-sm">
                                                 <i class="fas fa-pencil-alt"></i>
                                                 </a>&nbsp;&nbsp;
                                                 <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerUtilisateur.php?id_utilisateur=<?php echo $STAGIAIRE['id_utilisateur'] ?>"  class="btn btn-danger btn-circle btn-sm">
+                                                    href="SupprimerGroupe.php?id_groupe=<?php echo $STAGIAIRE['id_groupe'] ?>"  class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>			
                                             </td>	

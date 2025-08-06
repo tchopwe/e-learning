@@ -60,8 +60,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Listing groupe</h6>
-                        <a class="collapse-item" href="ListeClients.php">Liste groupe</a>
-                        <a class="collapse-item" href="ListeClients.php">Ajouter groupe</a>
+                        <a class="collapse-item" href="views/groupe/ListeGroupe.php">Liste groupe</a>
+                        <a class="collapse-item" href="views/groupe/NouveauGroupe.php">Ajouter groupe</a>
                     </div>
                 </div>
             </li>
