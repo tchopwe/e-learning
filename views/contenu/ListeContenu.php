@@ -16,9 +16,10 @@
 
     $nombreContenu= $ListedesContenu->rowCount();
 
-    $ListeCours= $dam->query("SELECT * FROM cours"); // Je Mets Le Nom de Ma Table à Manipuler
+    $ListedesContenu= $dam->query("SELECT * FROM cours"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreCours= $ListeCours->rowCount();
+    $nombreContenu= $ListedesContenu->rowCount();
+
 
 
     
@@ -120,44 +121,50 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         <a target="_blank"
-                            href="NouveauCours.php" class="btn btn-success mb-3 ml-2"> Ajouter Cours
+                            href="NouveauContenu.php" class="btn btn-success mb-3 ml-2"> ajouter contenus
                         </a>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste de tout les Cours</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Liste de tout les contenus</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_Cours</th>
-                                            <th>Titre du cours</th>
-                                            <th>Description du cours</th>
-                                            <th>id_Enseignant</th>
-                                            <th>id_Semestre</th>
+                                            <th>id_contenu</th>
+                                            <th>titre_contenu</th>
+                                            <th>type_contenu</th>
+                                            <th>url_fichier</th>
+                                            <th>chiffre</th>
+                                            <th>id_cours</th>
+                                            <th>Identifiant du groupe</th>
+                                            <th>Identifiant de l'utilisateur</th>
                                             <th>ACTIONS</th>
                                         </tr>
                                     </thead>
 								<tbody><!-- Ici, Je Récupère Les Valeurs des Résultats de La REQUETTE -->
 								
-									<?php while($STAGIAIRE=$ListeCours->fetch()){?> 
+									<?php while($STAGIAIRE=$ListedesContenu->fetch()){?> 
 									
 										<tr> <!-- Ici, Je Mets Les Noms des Colonnes, Je Dis Bien Les Noms des Colonnes -->
 										
-											<td align="center"><?php echo $STAGIAIRE['id_cours'] ?></td>
-											<td><?php echo $STAGIAIRE['titre'] ?></td>
-											<td><?php echo $STAGIAIRE['description'] ?></td>
-											<td><?php echo $STAGIAIRE['id_enseignant'] ?></td>
-											<td><?php echo $STAGIAIRE['id_semestre'] ?></td>
+											<td align="center"><?php echo $STAGIAIRE['id_contenu'] ?></td>
+											<td><?php echo $STAGIAIRE['titre_contenu'] ?></td>
+											<td><?php echo $STAGIAIRE['type_contenu'] ?></td>
+											<td><?php echo $STAGIAIRE['url_fichier'] ?></td>
+											<td><?php echo $STAGIAIRE['chiffre'] ?></td>
+                                            <td><?php echo $STAGIAIRE['id_cours'] ?></td>
+                                            <td><?php echo $STAGIAIRE['id_groupe'] ?></td>
+                                            <td><?php echo $STAGIAIRE['id_utilisateur'] ?></td>
                                             <td>
-                                                <a href="EditerCours.php?id_cours=<?php echo $STAGIAIRE['id_cours'] ?>"  class="btn btn-info btn-circle btn-sm">
+                                                <a href="EditerContenu.php?id_contenu=<?php echo $STAGIAIRE['id_contenu'] ?>"  class="btn btn-info btn-circle btn-sm">
                                                 <i class="fas fa-pencil-alt"></i>
                                                 </a>&nbsp;&nbsp;
                                                 <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerCours.php?id_cours=<?php echo $STAGIAIRE['id_cours'] ?>"  class="btn btn-danger btn-circle btn-sm">
+                                                    href="SupprimerContenu.php?id_contenu=<?php echo $STAGIAIRE['id_contenu'] ?>"  class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>			
                                             </td>	

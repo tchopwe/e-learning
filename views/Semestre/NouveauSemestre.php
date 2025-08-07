@@ -1,4 +1,3 @@
-
 <?php
 	require_once('../../action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
 	
@@ -15,10 +14,6 @@
     $ListedesContenu= $dam->query("SELECT * FROM contenu"); // Je Mets Le Nom de Ma Table à Manipuler
 
     $nombreContenu= $ListedesContenu->rowCount();
-
-    $ListeCours= $dam->query("SELECT * FROM cours"); // Je Mets Le Nom de Ma Table à Manipuler
-
-    $nombreCours= $ListeCours->rowCount();
 
 
     
@@ -118,70 +113,68 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                        <a target="_blank"
-                            href="NouveauCours.php" class="btn btn-success mb-3 ml-2"> Ajouter Cours
-                        </a>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                        
+                            <div class="col-lg-8">
+                                <div >
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau Semestre</h1>
+                                    </div>
+                                    <form method="POST" action="InsertSemestre.php" class="form">
+             
+                                            <div class="form-group">
+                                            <label for="id_semestre"  class="control-label">Identifiant </label><br>
+                                                <input type="text" name="id_semestre" class="form-control form-control-user" id="id_semestre"
+                                                    placeholder="Identifiant">
+                                            </div>
+                                        
+                                        <div class="form-group">
+                                        <label for="nom" class="control-label">Noms du Semestre </label><br>
+                                            <input type="text" name="nom_semestre" class="form-control form-control-user" id="nom_semestre"
+                                                placeholder="nom_semestre">
+                                        </div>
+                                        
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste de tout les Cours</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>id_Cours</th>
-                                            <th>Titre du cours</th>
-                                            <th>Description du cours</th>
-                                            <th>id_Enseignant</th>
-                                            <th>id_Semestre</th>
-                                            <th>ACTIONS</th>
-                                        </tr>
-                                    </thead>
-								<tbody><!-- Ici, Je Récupère Les Valeurs des Résultats de La REQUETTE -->
-								
-									<?php while($STAGIAIRE=$ListeCours->fetch()){?> 
-									
-										<tr> <!-- Ici, Je Mets Les Noms des Colonnes, Je Dis Bien Les Noms des Colonnes -->
-										
-											<td align="center"><?php echo $STAGIAIRE['id_cours'] ?></td>
-											<td><?php echo $STAGIAIRE['titre'] ?></td>
-											<td><?php echo $STAGIAIRE['description'] ?></td>
-											<td><?php echo $STAGIAIRE['id_enseignant'] ?></td>
-											<td><?php echo $STAGIAIRE['id_semestre'] ?></td>
-                                            <td>
-                                                <a href="EditerCours.php?id_cours=<?php echo $STAGIAIRE['id_cours'] ?>"  class="btn btn-info btn-circle btn-sm">
-                                                <i class="fas fa-pencil-alt"></i>
-                                                </a>&nbsp;&nbsp;
-                                                <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerCours.php?id_cours=<?php echo $STAGIAIRE['id_cours'] ?>"  class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>			
-                                            </td>	
-                                    </a>									
-
-												<?php } ?>
-											</td>
-										</tr>
-								</tbody>
-                                </table>
+                                            <div class="form-group">
+                                            <label for="niveau" class="control-label">Niveau</label><br>
+                                                <input type="text"  name="niveau" class="form-control form-control-user"
+                                                    id="niveau" placeholder="niveau">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="annee_academique" class="control-label">annee_academique</label><br>
+                                                <input type="annee_academique" name="annee_academique"  class="form-control form-control-user"
+                                                    id="annee_academique" placeholder="annee_academique">
+                                            </div>
+                                        
+                                        
+                                        <button type="submit" class="btn btn-success"> valider </button>
+                                        <hr>
+                                    </form>
+                                </div>
+                                <div class="col-lg-2"></div>
                             </div>
-                            <a href="action/genePdf.php" class="btn btn-primary position-rigth"> imprimer</a>
                         </div>
                     </div>
-
                 </div>
+
                 <!-- /.container-fluid -->
-                <div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
 
             </div>
+
             <!-- End of Main Content -->
 
             <!-- Footer -->
-           <?php include('../../footer.php')?>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; LeslieNgansop 2024</span>
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>
@@ -196,22 +189,23 @@
     </a>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../../vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../../js/demo/chart-area-demo.js"></script>
-    <script src="../../js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
 </html>
+                <!-- Begin Page Content -->

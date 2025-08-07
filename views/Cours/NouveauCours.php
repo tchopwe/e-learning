@@ -127,7 +127,7 @@
                             <div class="col-lg-8">
                                 <div >
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau utilisateur</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau cours</h1>
                                     </div>
                                     <form method="POST" action="InsertCours.php" class="form">
              

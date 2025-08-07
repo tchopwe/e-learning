@@ -16,9 +16,13 @@
 
     $nombreContenu= $ListedesContenu->rowCount();
 
-    $ListeCours= $dam->query("SELECT * FROM cours"); // Je Mets Le Nom de Ma Table à Manipuler
+    $ListedesCours= $dam->query("SELECT * FROM cours"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreCours= $ListeCours->rowCount();
+    $nombreCours= $ListedesCours->rowCount();
+
+    $ListedesSemestres= $dam->query("SELECT * FROM semestre"); // Je Mets Le Nom de Ma Table à Manipuler
+
+    $nombreSemestre= $ListedesSemestres->rowCount();
 
 
     
@@ -120,44 +124,42 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         <a target="_blank"
-                            href="NouveauCours.php" class="btn btn-success mb-3 ml-2"> Ajouter Cours
+                            href="NouveauSemestre.php" class="btn btn-success mb-3 ml-2"> ajouter semestre
                         </a>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste de tout les Cours</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Liste de tout les Semestre</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_Cours</th>
-                                            <th>Titre du cours</th>
-                                            <th>Description du cours</th>
-                                            <th>id_Enseignant</th>
-                                            <th>id_Semestre</th>
+                                            <th>Identifiant</th>
+                                            <th>Noms du semestre</th>
+                                            <th>niveau</th>
+                                            <th>annee_academique</th>
                                             <th>ACTIONS</th>
                                         </tr>
                                     </thead>
 								<tbody><!-- Ici, Je Récupère Les Valeurs des Résultats de La REQUETTE -->
 								
-									<?php while($STAGIAIRE=$ListeCours->fetch()){?> 
+									<?php while($STAGIAIRE=$ListedesSemestres->fetch()){?> 
 									
 										<tr> <!-- Ici, Je Mets Les Noms des Colonnes, Je Dis Bien Les Noms des Colonnes -->
 										
-											<td align="center"><?php echo $STAGIAIRE['id_cours'] ?></td>
-											<td><?php echo $STAGIAIRE['titre'] ?></td>
-											<td><?php echo $STAGIAIRE['description'] ?></td>
-											<td><?php echo $STAGIAIRE['id_enseignant'] ?></td>
-											<td><?php echo $STAGIAIRE['id_semestre'] ?></td>
+											<td align="center"><?php echo $STAGIAIRE['id_semestre'] ?></td>
+											<td><?php echo $STAGIAIRE['nom_semestre'] ?></td>
+											<td><?php echo $STAGIAIRE['niveau'] ?></td>
+											<td><?php echo $STAGIAIRE['annee_academique'] ?></td>
                                             <td>
-                                                <a href="EditerCours.php?id_cours=<?php echo $STAGIAIRE['id_cours'] ?>"  class="btn btn-info btn-circle btn-sm">
+                                                <a href="EditerSemestre.php?id_semestre=<?php echo $STAGIAIRE['id_semestre'] ?>"  class="btn btn-info btn-circle btn-sm">
                                                 <i class="fas fa-pencil-alt"></i>
                                                 </a>&nbsp;&nbsp;
                                                 <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerCours.php?id_cours=<?php echo $STAGIAIRE['id_cours'] ?>"  class="btn btn-danger btn-circle btn-sm">
+                                                    href="SupprimerSemestre.php?id_semestre=<?php echo $STAGIAIRE['id_semestre'] ?>"  class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>			
                                             </td>	

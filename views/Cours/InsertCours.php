@@ -12,10 +12,10 @@
 	$Lib5 = $_POST['id_enseignant'];	
 
 	$Lib6 = $_POST['id_semestre'];	
-	
+		
 	$requete = "INSERT INTO cours (id_cours,titre,description,id_enseignant,id_semestre) VALUES (?,?,?,?,?)";	
 	
-	$param = array($Lib2,$Lib3,$Lib4,$Lib5,$Lib6);	
+	$param = array($Lib2,$Lib3,$Lib4,$Lib5,$Lib6,);	
 	// var_dump($param);
 	// die();
 	$resultat = $dam->prepare($requete);
