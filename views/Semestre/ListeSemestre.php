@@ -33,7 +33,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         <a target="_blank"
-                            href="NouveauSemestre.php" class="btn btn-success mb-3 ml-2"> ajouter semestre
+                            href="views/Semestre/NouveauSemestre.php" class="btn btn-success mb-3 ml-2 ajax-link"> ajouter semestre
                         </a>
 
                     <!-- DataTales Example -->
@@ -64,11 +64,11 @@
 											<td><?php echo $STAGIAIRE['niveau'] ?></td>
 											<td><?php echo $STAGIAIRE['annee_academique'] ?></td>
                                             <td>
-                                                <a href="EditerSemestre.php?id_semestre=<?php echo $STAGIAIRE['id_semestre'] ?>"  class="btn btn-info btn-circle btn-sm">
+                                                <a href="views/Semestre/EditerSemestre.php?id_semestre=<?php echo $STAGIAIRE['id_semestre'] ?>"  class="btn btn-info btn-circle btn-sm ajax-link">
                                                 <i class="fas fa-pencil-alt"></i>
                                                 </a>&nbsp;&nbsp;
                                                 <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerSemestre.php?id_semestre=<?php echo $STAGIAIRE['id_semestre'] ?>"  class="btn btn-danger btn-circle btn-sm">
+                                                    href="views/Semestre/SupprimerSemestre.php?id_semestre=<?php echo $STAGIAIRE['id_semestre'] ?>"  class="btn btn-danger btn-circle btn-sm ajax-link">
                                                     <i class="fas fa-trash"></i>
                                                 </a>			
                                             </td>	

@@ -11,15 +11,15 @@
     $nombreUsers = $ListeOfUsers->rowCount();
 	
 	
-	$LaClasse=$_GET['id_groupe'];
+	$ListeOfUsers=$_GET['id_groupe'];
 	
 	$requete="DELETE FROM groupe WHERE id_groupe = ?";			
 	
-	$param=array($LaClasse);	
+	$param=array($ListeOfUsers);	
 	
 	$resultat = $dam->prepare($requete);	
 	
 	$resultat->execute($param);	
 	
-	header("location:ListeGroupe.php");
+	include("ListeGroupe.php");
 ?>

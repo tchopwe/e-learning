@@ -55,7 +55,7 @@
                                     <p></p>
                                 </div>
                                <div class="col-lg-6">
-								<form method="post" action="UpdateGroupe.php" enctype="multipart/form-data">
+								<form method="post" action="views/groupe/UpdateGroupe.php" enctype="multipart/form-data" class="ajax-form">
 									
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
 										<label for="id_groupe">Identifiant</label>
@@ -83,7 +83,7 @@
 									<button type="submit" class="btn btn-success mr-3">Enregistrer Mofications</button>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 									
 									<!-- Ici, Je Dois Mettre Le Nom du Fichier Afin de Revenir Sur La Liste des Eléments de La Table -->
-									<a href="ListeGroupe.php"> <button class="btn btn-danger"> Annuler</button></a>
+									<a href="views/groupe/ListeGroupe.php" class="ajax-link"> <button class="btn btn-danger"> Annuler</button></a>
 								
 								</form>
                                 </div> 

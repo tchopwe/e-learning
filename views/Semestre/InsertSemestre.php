@@ -20,5 +20,5 @@
 
 	$resultat->execute($param);
 		
-	header("location:ListeSemestre.php");
+	include("ListeSemestre.php");
 ?>

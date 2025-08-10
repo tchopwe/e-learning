@@ -62,7 +62,7 @@
                                                 <i class="fas fa-pencil-alt"></i>
                                                 </a>&nbsp;&nbsp;
                                                 <a Onclick="return confirm('Etes Vous Sur de Vouloir Supprimer ?')" 
-                                                    href="SupprimerGroupe.php?id_groupe=<?php echo $STAGIAIRE['id_groupe'] ?>"  class="btn btn-danger btn-circle btn-sm">
+                                                    href="views/groupe/SupprimerGroupe.php?id_groupe=<?php echo $STAGIAIRE['id_groupe'] ?>"  class="btn btn-danger btn-circle btn-sm ajax-link">
                                                     <i class="fas fa-trash"></i>
                                                 </a>			
                                             </td>	

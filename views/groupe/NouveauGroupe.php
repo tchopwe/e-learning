@@ -32,7 +32,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau groupe</h1>
                                     </div>
-                                    <form method="POST" action="InsertGroupe.php" class="form">
+                                    <form method="POST" action="views/groupe/InsertGroupe.php" class="ajax-form">
              
                                             <div class="form-group">
                                             <label for="id_groupe"  class="control-label">Identifiant </label><br>
@@ -42,7 +42,7 @@
                                         
                                         <div class="form-group">
                                         <label for="nom_group" class="control-label">Noms </label><br>
-                                            <input type="text" name="nom_group" class="form-control form-control-user" id="nom_group"
+                                            <input type="text" name="nom_groupe" class="form-control form-control-user" id="nom_group"
                                                 placeholder="Noms du groupe">
                                         </div>
                                         

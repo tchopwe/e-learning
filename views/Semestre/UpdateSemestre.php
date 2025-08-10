@@ -28,7 +28,7 @@
 		echo " ce grave mama ";
 	 }else {
 		//Ici, Après Exécution de La REQUETTE, Je Dois Automatiquement REVENIR Sur La Liste des Eléments de La Table
-		header("location:ListeSemestre.php");
+		include("ListeSemestre.php");
 	 }
 	
 ?>

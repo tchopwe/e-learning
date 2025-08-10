@@ -32,7 +32,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau Semestre</h1>
                                     </div>
-                                    <form method="POST" action="InsertSemestre.php" class="form">
+                                    <form method="POST" action="views/Semestre/InsertSemestre.php" class="ajax-form">
              
                                             <div class="form-group">
                                             <label for="id_semestre"  class="control-label">Identifiant </label><br>

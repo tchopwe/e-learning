@@ -96,7 +96,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Listing Semestre</h6>
                 <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Liste des Semestres</a>
-                <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Ajouter Semestre</a>
+                <a class="collapse-item ajax-link" href="views/Semestre/NouveauSemestre.php">Ajouter Semestre</a>
             </div>
         </div>
     </li>
