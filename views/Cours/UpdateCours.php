@@ -30,7 +30,7 @@
 		echo " c'est grave mama ";
 	 }else {
 		//Ici, Après Exécution de La REQUETTE, Je Dois Automatiquement REVENIR Sur La Liste des Eléments de La Table
-		header("location:ListeCours.php");
+		include("ListeCours.php");
 	 }
 	
 ?>

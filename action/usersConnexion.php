@@ -27,13 +27,13 @@ if (isset($_POST['login'])) {
 
                 // Redirection selon le rôle
                 if ($user['type_utilisateur'] === 'admin') {
-                    header("Location: ../admindashboard.php");
+                    header("Location: ../adminlayout.php");
                     exit;
                 } elseif ($user['type_utilisateur'] === 'etudiant') {
-                    header("Location: ../userdashboard.php");
+                    header("Location: ../studentlayout.php");
                     exit;
                 }  elseif ($user['type_utilisateur'] === 'enseignant') {
-                    header("Location: ../teacherdashboard.php");
+                    header("Location: ../teacherlayout.php");
                     exit;
                 }else {
                     echo "❌ Rôle non reconnu.";

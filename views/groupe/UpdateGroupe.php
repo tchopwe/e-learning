@@ -14,12 +14,12 @@
 
 		
 	//Ici, Je Tape Ma REQUETTE SQL Pour Mise à Jour de La Ligne, Et On Modifie Suivant La Clé Primaire Donc Je Dois Toujours Mettre La Colonne1 à La Fin
-	$requete= "UPDATE groupe SET id_groupe = ?, nom_groupe = ?, niveau = ?, cle_chiffrement = ? WHERE id_groupe = ?";
+	$requete= "UPDATE groupe SET nom_groupe = ?, niveau = ?, cle_chiffrement = ? WHERE id_groupe = ?";
 	
 	//Ici, Je Construis Le Tableau des Paramètres En Fonction des Valeurs Et Toujours Terminer Par Colonne1, La Colonne Clé Primaire de La Table
-	$param=array($NomGroupe,$NiveauGroupe,$CleChiffrement,$IdGroupe);
-	// var_dump($param);
-	// die();
+	$param=array($IdGroupe,$NomGroupe,$NiveauGroupe,$CleChiffrement);
+	//var_dump($param);
+	//die();
 	// //Ici, Je Prépare Ma REQUETTE SQL
 	$resultat = $dam->prepare($requete);
 	

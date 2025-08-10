@@ -22,5 +22,5 @@
 
 	$resultat->execute($param);
 		
-	header("location:ListeCours.php");
+	include("ListeCours.php");
 ?>

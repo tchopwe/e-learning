@@ -15,16 +15,16 @@
 
 	$Lib7 = $_POST['type_utilisateur'];	
 
-	$Lib7 = $_POST['id_groupe'];	
+	$Lib8 = $_POST['id_groupe'];	
 	
 	$requete = "INSERT INTO utilisateur (id_utilisateur,nom,prenom,email,mot_de_passe,type_utilisateur,id_groupe) VALUES (?,?,?,?,?,?,?)";	
 	
-	$param = array($Lib2,$Lib3,$Lib4,$Lib5,$Lib6,$Lib7);	
+	$param = array($Lib2,$Lib3,$Lib4,$Lib5,$Lib6,$Lib7,$Lib8);	
 	// var_dump($param);
 	// die();
 	$resultat = $dam->prepare($requete);
 
 	$resultat->execute($param);
 		
-	header("location:ListeUtilisateur.php");
+	include('ListeUtilisateur.php');
 ?>
