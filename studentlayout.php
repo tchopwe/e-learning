@@ -25,7 +25,7 @@ require_once('action/connexion.php');
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Etudiant</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="asset/css/sb-admin-2.min.css" rel="stylesheet">
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -43,7 +43,7 @@ require_once('action/connexion.php');
         <!-- Main Content -->
         <div id="content">
             <!-- Header -->
-            <?php include ('topbar.php'); ?>
+            
             <!-- End Header -->
 
             <!-- Contenu dynamique -->
@@ -55,7 +55,7 @@ require_once('action/connexion.php');
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-blue-800"><b>Tableau de bord</b></h1>
+                        <h1 class="h3 mb-0 text-blue-800"><b>Group A</b></h1>
                     </div>
 
                     <!-- Content Row -->
@@ -68,11 +68,11 @@ require_once('action/connexion.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-4">
-                                                <h5><b>Total Utilisateur</b></h5></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreUtilisateur ?></b></h5></div>
+                                                <h5><b>TOTAL COURS DISPONIBLES</b></h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreCours ?></b></h5></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                            <i class="fas fa-folder"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -86,28 +86,45 @@ require_once('action/connexion.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-4">
-                                                <h5><b>Total Groupe</b></h5></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreGroup ?></b></h5></div>
+                                                <h5><b>TOTAL DOCUMENTS TELECHARGES </b></h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreDocuments ?></b></h5></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                            <i class="fas fa-download"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-md-6 mb-6">
-                            <div class="card border-bottom-primary shadow h-100 py-2">
+                         <div class="col-xl-4 col-md-6 mb-6">
+                            <div class="card border-bottom-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-4">
-                                                <h5><b>Total Contenus</b></h5></div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-4">
+                                                <h5><b>TOTAL NOTIFICATIONS  </b></h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombrenotifications ?></b></h5></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-bell"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                        <div class="col-xl-4 col-md-6 mb-6">
+                            <div class="card border-bottom-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-4">
+                                                <h5><b>TOTAL CONTENUS CHIFFRES</b></h5></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreContenu ?></b></h5></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-book-reader"></i>
+                                            <i class="fas fa-lock"></i>
                                         </div>
                                     </div>
                                 </div>
