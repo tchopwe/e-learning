@@ -18,6 +18,11 @@ require_once('action/connexion.php');
 
     $nombreContenu= $ListedesContenu->rowCount();
 
+    $ListedesCours= $dam->query("SELECT * FROM cours"); // Je Mets Le Nom de Ma Table à Manipuler
+
+    $nombreCours= $ListedesCours->rowCount();
+
+
 
     
 ?>

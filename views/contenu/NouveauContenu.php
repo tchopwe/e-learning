@@ -17,11 +17,7 @@
 
 
     
-?>
-
-
-
-                <!-- Begin Page Content -->
+?>  <!-- Begin Page Content -->
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body">
                         <!-- Nested Row within Card Body -->
@@ -33,7 +29,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Ajouter un nouveau utilisateur</h1>
                                     </div>
-                                    <form method="POST" action="InsertContenu.php" class="form">
+                                    <form method="POST" action="view/contenu/InsertContenu.php" class="form">
              
                                             <div class="form-group">
                                             <label for="id_contenu"  class="control-label">Identifiant </label><br>
@@ -46,22 +42,26 @@
                                             <input type="text" name="titre_contenu" class="form-control form-control-user" id="titre_contenu"
                                                 placeholder="titre_contenu">
                                         </div>
-                                        
 
-                                            <div class="form-group">
-                                            <label for="type_contenu" class="control-label">type_contenu</label><br>
-                                                <input type="text"  name="type_contenu" class="form-control form-control-user"
-                                                    id="type_contenu" placeholder="type_contenu">
+                                             <div class="form-group">
+                                            <label for="type_contenu">Type de contenu :</label>
+                                               <select name="type_contenu" id="type_contenu" required>
+                                                   <option value="">--Sélectionner--</option>
+                                                   <option value="image">Image</option>
+                                                   <option value="video">Vidéo</option>
+                                                   <option value="pdf">PDF</option>
+                                                </select><br><br>
                                             </div>
+
                                             <div class="form-group">
                                             <label for="url_fichier" class="control-label">url_fichier</label><br>
                                                 <input type="url_fichier" name="url_fichier"  class="form-control form-control-user"
                                                     id="url_fichier" placeholder="url_fichier">
                                             </div>
                                             <div class="form-group">
-                                            <label for="mot_de_passe" class="control-label">Mot de passe</label><br>
-                                                <input type="password" name="mot_de_passe"  class="form-control form-control-user"
-                                                    id="mot_de_passe" placeholder="Mot de passe">
+                                            <label for="chiffre" class="control-label">chiffre</label><br>
+                                                <input type="chiffre" name="chiffre"  class="form-control form-control-user"
+                                                    id="chiffre" placeholder="chiffre">
                                             </div>
                                             <div class="form-group">
                                             <label for="type_utilisateur" class="control-label">Type d'utilisateur</label><br>
