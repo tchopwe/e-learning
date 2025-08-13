@@ -75,7 +75,7 @@
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
 										<label for="cle_chiffrement">clé de chiffrement</label><br>
 										<input type="text" name="cle_chiffrement" class="form-control"  size="50" id="cle_chiffrement" value="<?php echo $LaListe['cle_chiffrement']; ?>"/>
-									</div>
+									</div> <br>
 									
 								
 									

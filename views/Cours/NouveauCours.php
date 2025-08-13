@@ -59,7 +59,7 @@
                                                 <input type="text"  name="description" class="form-control form-control-user"
                                                     id="description" placeholder="Desciption du Cours">
                                             </div>
-                                            <div class="form-group">
+                                        
                                             <div class="form-group">
                                                 <label for="id_utilisateur" class="control-label">Choix de l'enseignant</label>
                                                 <select name="id_enseignant" id="id_utilisateur" class="form-control">

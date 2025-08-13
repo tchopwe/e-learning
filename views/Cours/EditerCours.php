@@ -19,7 +19,7 @@
 
     $nombreCours= $ListeCours->rowCount();
 
-
+	$ListeSemestre= $dam->query("SELECT * FROM semestre")
     
 ?>
 
@@ -96,7 +96,7 @@
                                                 </option>
                                                     <?php } ?>
                                         </select>
-                                    </div>				
+                                    </div>	<br>			
 														
 									<!-- Je Peux Changer Le Libellé -->
 									<button type="submit" class="btn btn-success">Enregistrer</button>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp

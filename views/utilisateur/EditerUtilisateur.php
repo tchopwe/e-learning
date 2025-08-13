@@ -48,7 +48,7 @@
 						<fieldset>
 							<legend>
 								<div><!-- Je Peux Donner Un Titre à Ma Page -->
-									<h1><center>Modifier Les Informations Sur L'etudiant </center></h1>
+									<h1><center>Modifier Les Informations Sur L'Utilisateur </center></h1>
 								</div>
 							</legend><br>
 							<div class="row"><!-- Je Dois Mettre Le Nom du Script Qui Va Valider La Modification des Valeurs -->

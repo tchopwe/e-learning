@@ -57,7 +57,7 @@
 						<fieldset>
 							<legend>
 								<div><!-- Je Peux Donner Un Titre à Ma Page -->
-									<h1><center>Modifier Les Informations Sur L'etudiant </center></h1>
+									<h1><center>Modifier Les Informations Sur Le Semestre </center></h1>
 								</div>
 							</legend><br>
 							<div class="row"><!-- Je Dois Mettre Le Nom du Script Qui Va Valider La Modification des Valeurs -->
@@ -65,7 +65,7 @@
                                     <p></p>
                                 </div>
                                <div class="col-lg-6">
-								<form method="post" action="views/Semestre/UpdateSemestre.php" enctype="multipart/form-data">
+								<form method="post" action="views/Semestre/UpdateSemestre.php" enctype="multipart/form-data" class="ajax-form">
 									
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
 										<label for="id_semestre">Identifiant</label>
@@ -85,7 +85,7 @@
 									<div><!-- Je Dois Mettre Le Nom de La Colonne Sur For, Id, Name Et Aussi dans $LaListe -->
 										<label for="annee_academique">Année Académiquer</label><br>
 										<input type="annee_academique" name="annee_academique" class="form-control"  size="50" id="annee_academique" value="<?php echo $LaListe['annee_academique']; ?>"/>
-									</div>
+									</div> <br>
 									<!-- Je Peux Changer Le Libellé -->
 									<button type="submit" class="btn btn-success mr-3">Enregistrer Mofications</button>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 									
