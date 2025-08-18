@@ -22,19 +22,53 @@
     <hr class="sidebar-divider">
     <!-- Cours -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCours"
-            aria-expanded="true" aria-controls="collapseCours">
-            <i class="fas fa-book"></i>
-            <span>Cours disponibles</span>
-        </a>
-        <div id="collapseCours" class="collapse" aria-labelledby="headingCours" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Listing Cours</h6>
-                <a class="collapse-item ajax-link" href="views/cours/ListeCours.php">Cours Semestres 1</a>
-                <a class="collapse-item ajax-link" href="views/cours/NouveauCours.php">Cours Semestre 2</a>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCours"
+       aria-expanded="true" aria-controls="collapseCours">
+        <i class="fas fa-book"></i>
+        <span>Cours disponibles</span>
+    </a>
+    <div id="collapseCours" class="collapse" aria-labelledby="headingCours" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Niveaux</h6>
+
+            <!-- Niveau 1 -->
+            <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseCoursNiveau1"
+               aria-expanded="false" aria-controls="collapseCoursNiveau1">
+                <i class="fas fa-layer-group"></i> Niveau 1
+                <i class="fas fa-chevron-down float-right"></i>
+            </a>
+            <div id="collapseCoursNiveau1" class="collapse">
+                <div class="bg-light py-2 collapse-inner rounded ml-3">
+                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=1&semestre=1">
+                        <i class="fas fa-book-open"></i> Semestre 1
+                    </a>
+                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=1&semestre=2">
+                        <i class="fas fa-book-open"></i> Semestre 2
+                    </a>
+                </div>
             </div>
+
+            <!-- Niveau 2 -->
+            <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseCoursNiveau2"
+               aria-expanded="false" aria-controls="collapseCoursNiveau2">
+                <i class="fas fa-layer-group"></i> Niveau 2
+                <i class="fas fa-chevron-down float-right"></i>
+            </a>
+            <div id="collapseCoursNiveau2" class="collapse">
+                <div class="bg-light py-2 collapse-inner rounded ml-3">
+                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=2&semestre=1">
+                        <i class="fas fa-book-open"></i> Semestre 1
+                    </a>
+                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=2&semestre=2">
+                        <i class="fas fa-book-open"></i> Semestre 2
+                    </a>
+                </div>
+            </div>
+
         </div>
-    </li>
+    </div>
+</li>
+
 
     <!-- Semestre -->
     <li class="nav-item">
@@ -78,6 +112,7 @@
         <div id="collapseContenus" class="collapse" aria-labelledby="headingContenus" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Listing Semestre</h6>
+                
                 <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Semestres 1</a>
                 <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Semestre 2</a>
             </div>

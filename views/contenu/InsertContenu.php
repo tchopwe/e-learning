@@ -2,7 +2,6 @@
 <?php
 	require_once('../../action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
 
-
 	$Lib1 = $_POST['id_contenu'];
 	
 	$Lib2 = $_POST['titre_contenu'];	
