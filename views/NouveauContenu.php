@@ -4,16 +4,13 @@ require_once('../../action/Connexion.php');
 
 // --- Utilitaires --- //
 
-// ⚠ Activer les erreurs PDO pour voir les vrais messages d'erreur SQL
-$dam->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 /**
  * Retourne une clé binaire (32 octets) à partir de la valeur DB (base64).
  * Si la valeur DB est vide ou invalide, on en génère une nouvelle (32 octets) et on la renvoie (et on devra la stocker).
  */
-function getOrCreateGroupKey(PDO $dam, int $groupeId): string {
+function getOrCreateGroupKey(PDO $pdo, int $groupeId): string {
     // Récupérer la clé du groupe
-    $stmt = $dam->prepare("SELECT cle_chiffrement FROM groupe WHERE id_groupe = ?");
+    $stmt = $pdo->prepare("SELECT cle_chiffrement FROM groupe WHERE id_groupe = ?");
     $stmt->execute([$groupeId]);
     $cleBase64 = $stmt->fetchColumn();
 
@@ -27,7 +24,7 @@ function getOrCreateGroupKey(PDO $dam, int $groupeId): string {
 
     // Sinon on génère une nouvelle clé (32 octets), on la stocke en base64 dans la table groupe, et on la retourne (binaire)
     $newKey = random_bytes(32);
-    $stmt = $dam->prepare("UPDATE groupe SET cle_chiffrement = ? WHERE id_groupe = ?");
+    $stmt = $pdo->prepare("UPDATE groupe SET cle_chiffrement = ? WHERE id_groupe = ?");
     $stmt->execute([base64_encode($newKey), $groupeId]);
 
     return $newKey;
@@ -99,19 +96,14 @@ $message = null;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         // Champs requis
-        // 1️⃣ Récupérer tous les champs du formulaire
-        $id_contenu     = trim($_POST['id_contenu'] ?? '');
-        $titre_contenu  = trim($_POST['titre_contenu'] ?? '');
-        $type_contenu   = trim($_POST['type_contenu'] ?? '');
-        $description    = trim($_POST['description'] ?? '');
-        $id_cours       = (int)($_POST['id_cours'] ?? 0);
-        $id_groupe      = (int)($_POST['id_groupe'] ?? 0);
-        $id_utilisateur = (int)($_POST['id_utilisateur'] ?? 0);
+        $libelle          = trim($_POST['libelle'] ?? '');
+        $type_contenu_in  = trim($_POST['type_contenu'] ?? '');
+        $type_utilisateur = (int)($_POST['type_utilisateur'] ?? 0);
+        $groupe           = (int)($_POST['groupe'] ?? 0);
 
-        if ($titre_contenu === '' || !$id_utilisateur || !$id_groupe) {
-             throw new InvalidArgumentException("Veuillez remplir tous les champs obligatoires.");
+        if ($libelle === '' || !$type_utilisateur || !$groupe) {
+            throw new InvalidArgumentException("Veuillez remplir tous les champs obligatoires.");
         }
-
 
         if (!isset($_FILES['fichier']) || $_FILES['fichier']['error'] !== UPLOAD_ERR_OK) {
             throw new RuntimeException("Aucun fichier valide n’a été envoyé.");
@@ -126,9 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // Déterminer le type (et le valider)
-
-        $type_contenu = detectAndValidateType($type_contenu, $origName);
-
+        $type_contenu = detectAndValidateType($type_contenu_in, $origName);
 
         // Dossier de stockage (séparer clair et chiffré si tu veux ; ici on ne garde que le chiffré)
         $uploadDir = __DIR__ . "/uploads/"; // Chemin serveur
@@ -141,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $encryptedFsPath = $uploadDir . $safeName;
 
         // Récupérer ou générer la clé du groupe (binaire 32 octets)
-        $groupKey = getOrCreateGroupKey($dam, $id_groupe);
+        $groupKey = getOrCreateGroupKey($pdo, $groupe);
 
         // Lire le binaire du fichier uploadé
         $plain = file_get_contents($tmpPath);
@@ -158,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // Construire l’URL/chemin web stocké en BD (ex: relatif au script)
-        $url_fichier = "uploads/" . basename($encryptedFsPath);
+        $publicPath = "uploads/" . basename($encryptedFsPath);
 
         // Enregistrer en base
         $stmt = $dam->prepare("
@@ -170,18 +160,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $titre_contenu,
             $type_contenu,       // On stocke le chemin du FICHIER CHIFFRÉ
             $url_fichier,
-            $description,
+            $Description,
             $id_cours,
             $id_groupe,
             $id_utilisateur,
 
         ]);
-
-var_dump([
-    $id_contenu, $titre_contenu, $type_contenu, $url_fichier,
-    $description, $id_cours, $id_groupe, $id_utilisateur
-]);
-
 
         $message = "✅ Contenu ajouté et chiffré avec succès.";
     } catch (Throwable $e) {
@@ -215,8 +199,8 @@ var_dump([
             </div>    
         
         <div class="form-group">
-                <label for="titre_contenu">Titre contenu <span class="text-danger">*</span></label>
-                <input type="text" name="titre_contenu" id="titre_contenu" class="form-control" required>
+                <label for="libelle">Libellé <span class="text-danger">*</span></label>
+                <input type="text" name="libelle" id="libelle" class="form-control" required>
             </div>
 
             <div class="form-group">
@@ -253,8 +237,8 @@ var_dump([
             </div>
 
           <div class="form-group">
-                <label for="id_groupe">Groupe (clé utilisée pour chiffrer) <span class="text-danger">*</span></label>
-                <select name="id_groupe" id="id_groupe" class="form-control" required>
+                <label for="groupe">Groupe (clé utilisée pour chiffrer) <span class="text-danger">*</span></label>
+                <select name="groupe" id="groupe" class="form-control" required>
                     <option value="">--Sélectionner--</option>
                     <?php foreach ($groupes as $g): ?>
                         <option value="<?= (int)$g['id_groupe'] ?>">
@@ -271,8 +255,8 @@ var_dump([
 
 
             <div class="form-group">
-                <label for="id_utilisateur">Type d'utilisateur <span class="text-danger">*</span></label>
-                <select name="id_utilisateur" id="id_utilisateur" class="form-control" required>
+                <label for="type_utilisateur">Type d'utilisateur <span class="text-danger">*</span></label>
+                <select name="type_utilisateur" id="type_utilisateur" class="form-control" required>
                     <option value="">--Sélectionner--</option>
                     <?php foreach ($typeUtilisateurs as $tu): ?>
                         <option value="<?= (int)$tu['id_utilisateur'] ?>"><?= htmlspecialchars($tu['nom']) ?></option>
