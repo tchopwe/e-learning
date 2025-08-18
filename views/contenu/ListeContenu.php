@@ -5,7 +5,7 @@ require_once('../../action/Connexion.php');
 $sql = "SELECT id_contenu, titre_contenu, type_contenu, url_fichier, id_groupe, id_utilisateur, id_cours, Description 
         FROM contenu";
 $stmt = $dam->prepare($sql);
-$stmt->execute($dam);
+$stmt->execute();
 $contenus = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
