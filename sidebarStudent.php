@@ -54,28 +54,28 @@
 
      <!-- Notifications -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSemestre"
-            aria-expanded="true" aria-controls="collapseSemestre">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNotifications"
+            aria-expanded="true" aria-controls="collapseNotifications">
             <i class="fas fa-bell"></i>
             <span>Notification</span>
         </a>
-        <div id="collapseSemestre" class="collapse" aria-labelledby="headingSemestre" data-parent="#accordionSidebar">
+        <div id="collapseNotifications" class="collapse" aria-labelledby="headingNotifications" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Listing Semestre</h6>
-                <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Semestres 1</a>
-                <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Semestre 2</a>
+                <h6 class="collapse-header">Listing Niveaux</h6>
+                <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Niveau 1</a>
+                <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Niveau 2</a>
             </div>
         </div>
     </li>
 
      <!-- contenu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSemestre"
-            aria-expanded="true" aria-controls="collapseSemestre">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContenus"
+            aria-expanded="true" aria-controls="collapseContenus">
             <i class="fas fa-lock"></i>
             <span>Contenus chiffrés</span>
         </a>
-        <div id="collapseSemestre" class="collapse" aria-labelledby="headingSemestre" data-parent="#accordionSidebar">
+        <div id="collapseContenus" class="collapse" aria-labelledby="headingContenus" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Listing Semestre</h6>
                 <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Semestres 1</a>
@@ -86,12 +86,12 @@
 
      <!-- paramètres -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSemestre"
-            aria-expanded="true" aria-controls="collapseSemestre">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseParamètres"
+            aria-expanded="true" aria-controls="collapseParamètres">
             <i class="fas fa-cog"></i>
             <span>paramètres</span>
         </a>
-        <div id="collapseSemestre" class="collapse" aria-labelledby="headingSemestre" data-parent="#accordionSidebar">
+        <div id="collapseParamètres" class="collapse" aria-labelledby="headingParamètres" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Listing Semestre</h6>
                 <a class="collapse-item ajax-link" href="views/Semestre/ListeSemestre.php">Semestres 1</a>

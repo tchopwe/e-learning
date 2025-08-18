@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <select name="Role" class="form-control form-control-user">
+                                              <select name="Role" class="form-control form-control-user" placeholder="Entrez votre mot de passe svp...">
                                                 <option value="">-- Veillez choisir votre categorie !! --</option>
                                                 <option value="etudiant">Étudiant</option>
                                                 <option value="enseignant">Enseignant</option>
