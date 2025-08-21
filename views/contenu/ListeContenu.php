@@ -2,8 +2,8 @@
 require_once('../../action/Connexion.php');
 
 // Récupération des contenus
-$sql = "SELECT id_contenu, titre_contenu, type_contenu, url_fichier, id_groupe, id_utilisateur, id_cours, Description 
-        FROM contenu";
+$sql = "SELECT id_contenu, titre_contenu, type_contenu, chemin_fichier, id_groupe, id_utilisateur, id_cours, Description 
+        FROM contenus";
 $stmt = $dam->prepare($sql);
 $stmt->execute();
 $contenus = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -25,9 +25,9 @@ $contenus = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink<?= $contenu['id_contenu'] ?>">
                         <div class="dropdown-header">Voulez-vous?</div>
                         <!-- Bouton ouvrir -->
-                        <a class="dropdown-item" target="_blank" href="<?= htmlspecialchars($contenu['url_fichier']) ?>">Ouvrir</a>
+                        <a class="dropdown-item" target="_blank" href="<?= htmlspecialchars($contenu['chemin_fichier']) ?>">Ouvrir</a>
                         <!-- Bouton télécharger -->
-                        <a class="dropdown-item" href="<?= htmlspecialchars($contenu['url_fichier']) ?>" download>Télécharger</a>
+                        <a class="dropdown-item" href="<?= htmlspecialchars($contenu['chemin_fichier']) ?>" download>Télécharger</a>
                     </div>
                 </div>
             </div>
@@ -38,12 +38,12 @@ $contenus = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php
                         $type = strtolower($contenu['type_contenu']);
                         if ($type == 'image') {
-                            echo '<img src="'.htmlspecialchars($contenu['url_fichier']).'" alt="Image" style="max-width:100%; height:150px; object-fit:cover;">';
+                            echo '<img src="'.htmlspecialchars($contenu['chemin_fichier']).'" alt="Image" style="max-width:100%; height:150px; object-fit:cover;">';
                         } elseif ($type == 'pdf') {
-                            echo '<img src="assets/img/pdf-icon.png" alt="PDF" style="height:100px;">';
+                            echo '<img src="../../assets/img/imgPdf.webp" alt="PDF" style="height:100px;">';
                         } elseif ($type == 'video') {
                             echo '<video width="100%" height="150" controls>
-                                    <source src="'.htmlspecialchars($contenu['url_fichier']).'" type="video/mp4">
+                                    <source src="'.htmlspecialchars($contenu['chemin_fichier']).'" type="video/mp4">
                                     Votre navigateur ne supporte pas la vidéo.
                                   </video>';
                         } else {

@@ -14,9 +14,9 @@ require_once('action/connexion.php');
     $nombreGroup = $Listedegroup->rowCount();
 
 
-    $ListedesContenu= $dam->query("SELECT * FROM contenu"); // Je Mets Le Nom de Ma Table à Manipuler
+    $ListedesContenus= $dam->query("SELECT * FROM contenus"); // Je Mets Le Nom de Ma Table à Manipuler
 
-    $nombreContenu= $ListedesContenu->rowCount();
+    $nombreContenus= $ListedesContenus->rowCount();
 
 
     
@@ -104,7 +104,7 @@ require_once('action/connexion.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-4">
                                                 <h5><b>Total Contenus</b></h5></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreContenu ?></b></h5></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreContenus ?></b></h5></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-book-reader"></i>
@@ -152,6 +152,36 @@ $(document).on('submit', '.ajax-form', function(e) {
         $('#main-content').html(data); // met la liste mise à jour
     });
 });
+
+
+$(document).on('submit', '.ajax-form', function(e) {
+    e.preventDefault(); // empêche le submit classique
+
+    var form = $(this);
+    var formData = new FormData(this); // prend en compte les fichiers
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        data: formData,
+        contentType: false, // obligatoire pour FormData
+        processData: false, // obligatoire pour FormData
+        dataType: 'json',   // on attend JSON
+        success: function(response) {
+            if(response.status === 'success') {
+                // Charger ListeContenu.php dans #main-content
+                $('#main-content').load('views/contenu/ListeContenu.php');
+            } else {
+                // Affiche l'erreur dans le div principal
+                $('#main-content').prepend('<div class="alert alert-danger">' + response.message + '</div>');
+            }
+        },
+        error: function(xhr, status, error) {
+            $('#main-content').prepend('<div class="alert alert-danger">Erreur AJAX : ' + error + '</div>');
+        }
+    });
+});
+
 
 </script>
 
