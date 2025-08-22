@@ -14,7 +14,7 @@ require_once('action/connexion.php');
     $nombreGroup = $Listedegroup->rowCount();
 
 
-    $ListedesContenu= $dam->query("SELECT * FROM contenu"); // Je Mets Le Nom de Ma Table à Manipuler
+    $ListedesContenu= $dam->query("SELECT * FROM contenus"); // Je Mets Le Nom de Ma Table à Manipuler
 
     $nombreContenu= $ListedesContenu->rowCount();
 
