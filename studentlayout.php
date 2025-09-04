@@ -1,6 +1,4 @@
-<?php
-require_once('action/connexion.php');
-?>
+
  <?php
 	require_once('action/connexion.php'); // Ici, J'Inclus Le Fichier Pour Vérifier Que L'Utilisateur Est Bien Connecté à Ma Base de Données
 	
@@ -92,7 +90,7 @@ require_once('action/connexion.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-4">
                                                 <h5><b>TOTAL DOCUMENTS TELECHARGES </b></h5></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreDocuments ?></b></h5></div>
+<!--                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombreDocuments ?></b></h5></div> -->
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-download"></i>
@@ -109,7 +107,7 @@ require_once('action/connexion.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-4">
                                                 <h5><b>TOTAL NOTIFICATIONS  </b></h5></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombrenotifications ?></b></h5></div>
+<!--                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h5><b><?= $nombrenotifications ?></b></h5></div>  -->
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-bell"></i>
@@ -140,6 +138,10 @@ require_once('action/connexion.php');
                     </div>
                 </div>
                 <!-- /.container-fluid -->
+                <div id="contenusArea" class="container mt-4">
+                    <h3>📂 Sélectionnez un semestre pour voir les cours</h3>
+                </div>
+
 
             </div>
             </div>

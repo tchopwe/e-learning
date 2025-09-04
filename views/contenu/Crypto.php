@@ -1,4 +1,8 @@
 <?php
+require_once("../../action/connexion.php");
+
+session_start();
+
 
 /**
  * Déchiffre un fichier chiffré et crée une version temporaire

@@ -39,10 +39,10 @@
             </a>
             <div id="collapseCoursNiveau1" class="collapse">
                 <div class="bg-light py-2 collapse-inner rounded ml-3">
-                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=1&semestre=1">
+                    <a class="collapse-item ajax-link" href="views/contenu/Listecont.php?niveau=1&semestre=1" class="ajax-link">
                         <i class="fas fa-book-open"></i> Semestre 1
                     </a>
-                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=1&semestre=2">
+                    <a class="collapse-item ajax-link" href="views/contenu/Listecont.php?niveau=1&semestre=2" class="ajax-link">
                         <i class="fas fa-book-open"></i> Semestre 2
                     </a>
                 </div>
@@ -56,10 +56,10 @@
             </a>
             <div id="collapseCoursNiveau2" class="collapse">
                 <div class="bg-light py-2 collapse-inner rounded ml-3">
-                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=2&semestre=1">
+                    <a class="collapse-item ajax-link" href="views/contenu/Listecont.php?niveau=2&semestre=1" class="ajax-link">
                         <i class="fas fa-book-open"></i> Semestre 1
                     </a>
-                    <a class="collapse-item ajax-link" href="views/cours/ListeCours.php?niveau=2&semestre=2">
+                    <a class="collapse-item ajax-link" href="views/contenu/Listecont.php?niveau=2&semestre=2" class="ajax-link">
                         <i class="fas fa-book-open"></i> Semestre 2
                     </a>
                 </div>
@@ -144,6 +144,35 @@
     <div class="sidebar-card d-none d-lg-flex">
         <img class="sidebar-card-illustration mb-2" src="img/logo_minesup.jpg" alt="...">
         <p class="text-center mb-2"><strong>MINESUP</strong> <br> Proche de vous pour le progrès!</p>
+
     </div>
 
 </ul>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".ajax-link");
+
+    links.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            const url = this.getAttribute("href");
+
+            fetch(url)
+                .then(res => res.text())
+                .then(data => {
+                    const container = document.getElementById("contenusArea");
+                    if (container) {
+                        container.innerHTML = data;
+                    } else {
+                        alert("⚠️ L'élément #contenusArea est introuvable dans ta page principale.");
+                    }
+                })
+                .catch(err => {
+                    document.getElementById("contenusArea").innerHTML = "<p class='text-danger'>Erreur de chargement.</p>";
+                });
+        });
+    });
+});
+</script>
